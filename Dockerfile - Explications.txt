@@ -1,0 +1,29 @@
+Explications :
+Étape de build (stage 1) :
+
+Nous utilisons une image Node.js (node:18-alpine) pour installer les dépendances et construire l'application Vue.js en production.
+Le répertoire de travail est défini comme /app, où nous copions les fichiers package.json et package-lock.json pour installer les dépendances.
+L'application est ensuite construite avec npm run build, générant les fichiers statiques dans le répertoire /app/dist.
+Étape de production (stage 2) :
+
+Nous passons à une image plus légère basée sur Nginx (nginx:alpine) pour servir les fichiers statiques.
+Les fichiers générés lors du build (dans /app/dist) sont copiés dans le répertoire par défaut de Nginx (/usr/share/nginx/html).
+Nous exposons le port 80 pour permettre à Nginx de servir l'application.
+
+Utilisation :
+
+Place ce fichier Dockerfile à la racine de ton projet Vue.js.
+Construis l'image Docker en exécutant la commande :
+
+bash
+
+docker build -t vuejs-app .
+
+Exécute le conteneur avec la commande suivante :
+
+bash
+
+docker run -p 8080:80 vuejs-app
+
+Cela exposera l'application Vue.js sur le port 8080 de ta machine locale.
+N'hésite pas à personnaliser ce Dockerfile en fonction de tes besoins (par exemple, ajouter un fichier de configuration Nginx personnalisé).
