@@ -19,10 +19,11 @@ import { RouterView } from 'vue-router'
           <v-app-bar app color="primary" dark>
             <v-toolbar-title>Swimming Pool</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn text to="/">Home</v-btn>
-            <v-btn text to="/infos">Infos</v-btn>
-            <v-btn text to="/about">About Us</v-btn>
-            <v-btn text to="/login">Login</v-btn>
+            <v-btn let text: any to="/">Home</v-btn>
+            <v-btn let text: any to="/infos">Infos</v-btn>
+            <v-btn let text: any to="/posts">Posts</v-btn>
+            <v-btn let text: any to="/about">About Us</v-btn>
+            <v-btn let text: any to="/login">Login</v-btn>
           </v-app-bar>
         </v-app>
       </nav>

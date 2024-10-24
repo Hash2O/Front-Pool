@@ -10,21 +10,17 @@
     ></v-progress-circular>
 
     <!-- Affichage de la liste des utilisateurs -->
-    <v-list v-else>
+    <v-list v-else class="custom-list">
       <v-list-item-group>
-        <v-list-item v-for="user in users" :key="user.id">
+        <v-list-item
+          v-for="user in users"
+          :key="user.id"
+          class="custom-list-item"
+        >
           <v-list-item-content>
             <v-list-item-title>Name : {{ user.name }}</v-list-item-title>
             <v-list-item-subtitle
               >Email : {{ user.email }}</v-list-item-subtitle
-            >
-            <v-list-item-subtitle
-              >Last Post's Title :
-              {{ user.posts[0].title }}</v-list-item-subtitle
-            >
-            <v-list-item-subtitle
-              >Last Post's Content :
-              {{ user.posts[0].body }}</v-list-item-subtitle
             >
           </v-list-item-content>
         </v-list-item>
@@ -46,13 +42,11 @@ interface User {
   id: number
   name: string
   email: string
-  posts: string
-  title: string
-  body: string
 }
 
 export default defineComponent({
   name: 'infos-component',
+  name2: 'CustomList',
   data() {
     return {
       users: [] as User[], // Typage explicite : users est un tableau d'objets de type User
@@ -90,5 +84,34 @@ export default defineComponent({
 <style scoped>
 h1 {
   margin-bottom: 20px;
+}
+.custom-list {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-list-item {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-list-item:hover {
+  background-color: #e3f2fd;
+}
+
+.custom-list-item .v-icon {
+  color: #1976d2;
+}
+
+.custom-list-item .v-list-item-title {
+  font-weight: bold;
+  color: #333;
+}
+
+.custom-list-item .v-list-item-subtitle {
+  color: #666;
 }
 </style>
